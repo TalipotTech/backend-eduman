@@ -1,0 +1,2 @@
+INSERT INTO `assets` (`id`, `title`, `path`, `category`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'blog image', 'images/course_1/pJBwoOtzUrmc32CnxYmK6WgpTQG0SXX8GJ3gTA6i.jpg', 'Blog Page', 'Active', '2023-04-20 08:28:48', '2023-04-20 08:28:48');

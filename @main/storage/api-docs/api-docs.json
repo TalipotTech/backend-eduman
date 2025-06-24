@@ -1,0 +1,4712 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Eduman Api Documentation",
+        "description": "Eduman Api Documentation",
+        "contact": {
+            "name": "Md Nasir Uddin",
+            "email": "nasir.chalo@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/api/v1"
+        }
+    ],
+    "paths": {
+        "/users/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Sign in",
+                "description": "Login by email, password",
+                "operationId": "store",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "nasir.chalo@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Sign in",
+                "description": "Register by email, name, etc",
+                "operationId": "saveUser",
+                "requestBody": {
+                    "description": "Register user",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "first_name",
+                                    "last_name",
+                                    "phone",
+                                    "email",
+                                    "role",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "nasir.chalo@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "password"
+                                    },
+                                    "first_name": {
+                                        "type": "string",
+                                        "example": "first name"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "example": "last name"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "phone"
+                                    },
+                                    "role": {
+                                        "type": "string",
+                                        "example": "role"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Error response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, Already exists your email"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/order-with-register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Order",
+                "description": "Order",
+                "operationId": "saveUserAndOrder",
+                "requestBody": {
+                    "description": "Order and Register user",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "price_plan_id",
+                                    "first_name",
+                                    "last_name",
+                                    "street_address",
+                                    "city",
+                                    "country",
+                                    "zip",
+                                    "phone",
+                                    "email",
+                                    "alt_first_name",
+                                    "alt_last_name",
+                                    "alt_street_address",
+                                    "alt_city",
+                                    "alt_country",
+                                    "alt_zip",
+                                    "alt_phone",
+                                    "alt_email"
+                                ],
+                                "properties": {
+                                    "price_plan_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "first_name": {
+                                        "type": "string",
+                                        "example": "first name"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "example": "last name"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "example": "berlin"
+                                    },
+                                    "zip": {
+                                        "type": "string",
+                                        "example": "10235"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "example": "germany"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "nasir.chalo@gmail.com"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "448775656"
+                                    },
+                                    "alt_first_name": {
+                                        "type": "string",
+                                        "example": "first name"
+                                    },
+                                    "alt_last_name": {
+                                        "type": "string",
+                                        "example": "last name"
+                                    },
+                                    "alt_city": {
+                                        "type": "string",
+                                        "example": "berlin"
+                                    },
+                                    "alt_zip": {
+                                        "type": "string",
+                                        "example": "10235"
+                                    },
+                                    "alt_country": {
+                                        "type": "string",
+                                        "example": "germany"
+                                    },
+                                    "alt_email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "nasir.chalo@gmail.com"
+                                    },
+                                    "alt_phone": {
+                                        "type": "string",
+                                        "example": "448775656"
+                                    },
+                                    "payment_method": {
+                                        "type": "string",
+                                        "example": "paypal"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Error response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, Already exists your email"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/reset-password": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Reset password",
+                "description": "Reset password",
+                "operationId": "resetPassword",
+                "requestBody": {
+                    "description": "Reset password",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "code",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "nasir.chalo@gmail.com"
+                                    },
+                                    "code": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "343467"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Error response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, We didn't find any account."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/check-email": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "check email on reset password",
+                "description": "check email on reset password",
+                "operationId": "setCode",
+                "requestBody": {
+                    "description": "check email on reset password",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "nasir.chalo@gmail.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Error response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, Already exists your email."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/author/instructors": {
+            "get": {
+                "tags": [
+                    "Instructor"
+                ],
+                "summary": "Get list of instructors",
+                "description": "Get list of instructors",
+                "operationId": "getAuthors",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/author/{author}/courses": {
+            "get": {
+                "tags": [
+                    "Instructor"
+                ],
+                "summary": "Get list of Author Courses",
+                "description": "Get list of Author Courses",
+                "operationId": "getCoursesFromAuthor",
+                "parameters": [
+                    {
+                        "name": "author",
+                        "in": "path",
+                        "description": "author",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/author/details": {
+            "get": {
+                "tags": [
+                    "Instructor"
+                ],
+                "summary": "Get instructor details",
+                "description": "Get instructor details",
+                "operationId": "getInstructorFromSlug",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "mahfuz-anam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/author/{author}/details": {
+            "get": {
+                "tags": [
+                    "Instructor"
+                ],
+                "summary": "Get Author details",
+                "description": "Get Author details",
+                "operationId": "getAuthorDetails",
+                "parameters": [
+                    {
+                        "name": "author",
+                        "in": "path",
+                        "description": "author",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/blogs/list": {
+            "get": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Get Blogs",
+                "description": "Get Blogs",
+                "operationId": "getBlogs",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/blogs/by-category": {
+            "get": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Get Blogs & cats ids",
+                "description": "Get Blogs & cats ids",
+                "operationId": "getBlogsByCategory",
+                "parameters": [
+                    {
+                        "name": "catId",
+                        "in": "query",
+                        "description": "catId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/blogs/{blog}/details": {
+            "get": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Get blog details",
+                "description": "Get blog details",
+                "operationId": "getBlogDetails",
+                "parameters": [
+                    {
+                        "name": "blog",
+                        "in": "path",
+                        "description": "blog",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/blogs/details": {
+            "get": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Get blog details",
+                "description": "Get blog details",
+                "operationId": "getBlogDetailsFromSlug",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "hello-world"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/type": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get list of Categories",
+                "description": "Get list of Categories",
+                "operationId": "getCategoryByTypes",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "type",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/{category}/chields": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get a category",
+                "description": "Get a category",
+                "operationId": "getCategoryChields",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "description": "category",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/courses": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get courses from Cat",
+                "description": "Get courses from Cat",
+                "operationId": "getCoursesFromCategory",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "development"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/class": {
+            "get": {
+                "tags": [
+                    "Classroom"
+                ],
+                "summary": "Get classrooms",
+                "description": "Get classrooms",
+                "operationId": "getClassrooms",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/class/by-course": {
+            "get": {
+                "tags": [
+                    "Classroom"
+                ],
+                "summary": "Get classroom from course",
+                "description": "Get classroom from course",
+                "operationId": "getClassroomFromCourse",
+                "parameters": [
+                    {
+                        "name": "courseId",
+                        "in": "query",
+                        "description": "courseId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/class/{class}/details": {
+            "get": {
+                "tags": [
+                    "Classroom"
+                ],
+                "summary": "Get a classroom details",
+                "description": "Get a classroom details",
+                "operationId": "getClassroomDetails",
+                "parameters": [
+                    {
+                        "name": "classroom",
+                        "in": "path",
+                        "description": "classroom",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/class/details": {
+            "get": {
+                "tags": [
+                    "Classroom"
+                ],
+                "summary": "Get class details",
+                "description": "Get class details",
+                "operationId": "getClassDetailsFromSlug",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "hello-world"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/courses/all": {
+            "get": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "Get courses",
+                "description": "Get courses",
+                "operationId": "getCourses",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/courses/tabs-courses-and-categories": {
+            "get": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "Get courses",
+                "description": "Get courses",
+                "operationId": "getTabsCourses",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/courses/{course}/categories": {
+            "get": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "Get course categories",
+                "description": "Get course categories",
+                "operationId": "getCategory",
+                "parameters": [
+                    {
+                        "name": "course",
+                        "in": "path",
+                        "description": "course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/courses/{course}/students": {
+            "get": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "Get course students",
+                "description": "Get course students",
+                "operationId": "getCourseStudents",
+                "parameters": [
+                    {
+                        "name": "course",
+                        "in": "path",
+                        "description": "course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/courses/{course}/instructors": {
+            "get": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "Get course students",
+                "description": "Get course students",
+                "operationId": "getInstructors",
+                "parameters": [
+                    {
+                        "name": "course",
+                        "in": "path",
+                        "description": "course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/courses/{course}/classroom": {
+            "get": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "Get classroom of course",
+                "description": "Get classroom of course",
+                "operationId": "getClassroom",
+                "parameters": [
+                    {
+                        "name": "course",
+                        "in": "path",
+                        "description": "course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/courses/details": {
+            "get": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "Get course details",
+                "description": "Get course details",
+                "operationId": "getCourseDetailsFromSlug",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "hello-world"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/courses/search": {
+            "post": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "Get courses from search",
+                "description": "Get courses from search",
+                "operationId": "getSearchCourses",
+                "requestBody": {
+                    "description": "Get courses from search",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    ""
+                                ],
+                                "properties": {
+                                    "keyword": {
+                                        "type": "string",
+                                        "example": "Hello"
+                                    },
+                                    "rating": {
+                                        "type": "string",
+                                        "example": "5"
+                                    },
+                                    "price": {
+                                        "type": "string",
+                                        "example": "free"
+                                    },
+                                    "cats": {
+                                        "type": "string",
+                                        "example": "10235"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Error response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, no results"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/courses/reviews": {
+            "get": {
+                "tags": [
+                    "Review"
+                ],
+                "summary": "Get reviews from course",
+                "description": "Get reviews from course",
+                "operationId": "getReviewFromCourse",
+                "parameters": [
+                    {
+                        "name": "courseId",
+                        "in": "query",
+                        "description": "courseId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/course/review/create": {
+            "post": {
+                "tags": [
+                    "Review"
+                ],
+                "summary": "Create course review",
+                "description": "Create course review",
+                "operationId": "createReview",
+                "requestBody": {
+                    "description": "Course review",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "courseId",
+                                    "rating",
+                                    "message"
+                                ],
+                                "properties": {
+                                    "courseId": {
+                                        "type": "string",
+                                        "example": "1"
+                                    },
+                                    "rating": {
+                                        "type": "string",
+                                        "example": "5"
+                                    },
+                                    "message": {
+                                        "type": "string",
+                                        "example": "Good Course"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Error response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, Can't create"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/course/enroll/student": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Post Student Course enroll",
+                "description": "Post Student Course enroll",
+                "operationId": "studentEnroll",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "course_id"
+                                ],
+                                "properties": {
+                                    "course_id": {
+                                        "type": "string",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/course/enroll/instructor": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Post Student Course enroll",
+                "description": "Post Student Course enroll",
+                "operationId": "instructorEnroll",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "course_id"
+                                ],
+                                "properties": {
+                                    "course_id": {
+                                        "type": "string",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/events": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "summary": "Get events",
+                "description": "Get events",
+                "operationId": "getEvents",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/events/upcoming": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "summary": "Get upcoming events",
+                "description": "Get upcoming events",
+                "operationId": "getUpcomingEvents",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/events/past": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "summary": "Get events",
+                "description": "Get events",
+                "operationId": "getPastEvents",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/events/{event}/details": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "summary": "Get a event details",
+                "description": "Get a event details",
+                "operationId": "getEventDetails",
+                "parameters": [
+                    {
+                        "name": "event",
+                        "in": "path",
+                        "description": "event",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/events/details": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "summary": "Get event details",
+                "description": "Get event details",
+                "operationId": "getEventDetailsFromSlug",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "hello-world"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/faqs": {
+            "get": {
+                "tags": [
+                    "FAQ"
+                ],
+                "summary": "Get faq",
+                "description": "Get faq",
+                "operationId": "getFaqs",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/faqs/{faq}/details": {
+            "get": {
+                "tags": [
+                    "FAQ"
+                ],
+                "summary": "Get a faq details",
+                "description": "Get a faq details",
+                "operationId": "getFaqDetails",
+                "parameters": [
+                    {
+                        "name": "faq",
+                        "in": "path",
+                        "description": "faq",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/faqs/details": {
+            "get": {
+                "tags": [
+                    "FAQ"
+                ],
+                "summary": "Get faq details",
+                "description": "Get faq details",
+                "operationId": "getFaqDetailsFromSlug",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "hello-world"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/login": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get inner login page settting",
+                "description": "Get inner login page settting",
+                "operationId": "getLoginPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/forget-password": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get inner forget password settting",
+                "description": "Get inner forget password settting",
+                "operationId": "getForgetPasswordPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/signup": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get inner signup page settting",
+                "description": "Get inner signup page settting",
+                "operationId": "getSignUpPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/contact": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner contact page",
+                "description": "Get settting of inner contact page",
+                "operationId": "getContactPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/course": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner course page",
+                "description": "Get settting of inner course page",
+                "operationId": "getCoursePage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/course-details": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner course details page",
+                "description": "Get settting of inner course details page",
+                "operationId": "getCourseDetailsPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/checkout": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner checkout page",
+                "description": "Get settting of inner checkout page",
+                "operationId": "getCheckoutPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/cart": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner cart page",
+                "description": "Get settting of inner cart page",
+                "operationId": "getCartPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/about": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner about page",
+                "description": "Get settting of inner about page",
+                "operationId": "getAboutPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/instructors": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner webinar details page",
+                "description": "Get settting of inner webinar details page",
+                "operationId": "getInstructorsListPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/instructor-details": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner webinar details page",
+                "description": "Get settting of inner webinar details page",
+                "operationId": "getInnerInstructorPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/student-profile": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner webinar details page",
+                "description": "Get settting of inner webinar details page",
+                "operationId": "getStudentProfilePage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/become-instructor": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner become instructor page",
+                "description": "Get settting of inner become instructor page",
+                "operationId": "getBecomeInstructorPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/blogs": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner blogs page",
+                "description": "Get settting of inner blogs page",
+                "operationId": "getBlogsListPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/blog-details": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner blog details page",
+                "description": "Get settting of inner blog details page",
+                "operationId": "getBlogDetailsPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/events": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner events page",
+                "description": "Get settting of inner events page",
+                "operationId": "getEventsListPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/event-details": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner event details page",
+                "description": "Get settting of inner event details page",
+                "operationId": "getEventDetailsPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/faqs": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner faqs page",
+                "description": "Get settting of inner faqs page",
+                "operationId": "getFaqsListPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/faq-details": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner faq details page",
+                "description": "Get settting of inner faq details page",
+                "operationId": "getFaqDetailsPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/membership": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner membership page",
+                "description": "Get settting of inner membership page",
+                "operationId": "getMembershipPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/404-page": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner 404 page",
+                "description": "Get settting of inner 404 page",
+                "operationId": "get404Page",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/failed-payment": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of failed payment page",
+                "description": "Get settting of failed payment page",
+                "operationId": "getFailedPaymentPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/thankyou": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of thank you page",
+                "description": "Get settting of inner thank you page",
+                "operationId": "getThankyouPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/inner-page/wishlist": {
+            "get": {
+                "tags": [
+                    "Inner Page Setting"
+                ],
+                "summary": "Get settting of inner wishlist page",
+                "description": "Get settting of inner wishlist page",
+                "operationId": "getWishlistPage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/lessons": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Get lesson",
+                "description": "Get lesson",
+                "operationId": "getLessons",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/lessons/by-course": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Get lesson from course",
+                "description": "Get lesson from course",
+                "operationId": "getLessonsFromCourse",
+                "parameters": [
+                    {
+                        "name": "courseId",
+                        "in": "query",
+                        "description": "courseId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/lessons/by-classroom": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Get lesson from course",
+                "description": "Get lesson from course",
+                "operationId": "getLessonsFromClassroom",
+                "parameters": [
+                    {
+                        "name": "courseId",
+                        "in": "query",
+                        "description": "courseId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/lessons/{lesson}/details": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Get a lesson details",
+                "description": "Get a lesson details",
+                "operationId": "getLessonDetails",
+                "parameters": [
+                    {
+                        "name": "lesson",
+                        "in": "path",
+                        "description": "lesson",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/page": {
+            "get": {
+                "tags": [
+                    "Page"
+                ],
+                "summary": "Get pages",
+                "description": "Get pages",
+                "operationId": "getPages",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/page/details": {
+            "get": {
+                "tags": [
+                    "Page"
+                ],
+                "summary": "Get page details",
+                "description": "Get page details",
+                "operationId": "getPageDetailsFromSlug",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "hello-world"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-01/header": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeOne"
+                ],
+                "summary": "Get header settting",
+                "description": "Get header settting",
+                "operationId": "getHomeOneHeader",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-01/categories": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeOne"
+                ],
+                "summary": "Get category settting",
+                "description": "Get category settting",
+                "operationId": "getHomeOneCategories",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-01/course": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeOne"
+                ],
+                "summary": "Get course settting",
+                "description": "Get course settting",
+                "operationId": "getHomeOneCourse",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-01/features": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeOne"
+                ],
+                "summary": "Get features settting",
+                "description": "Get features settting",
+                "operationId": "getHomeOneFeatures",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-01/about-us": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeOne"
+                ],
+                "summary": "Get about-us settting",
+                "description": "Get about-us settting",
+                "operationId": "getHomeOneAbout",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-01/testimonial": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeOne"
+                ],
+                "summary": "Get testimonial settting",
+                "description": "Get testimonial settting",
+                "operationId": "getHomeOneTestimonial",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-01/cta-01": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeOne"
+                ],
+                "summary": "Get cta-01 settting",
+                "description": "Get cta-01 settting",
+                "operationId": "getHomeOneCtaOne",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-01/cta-02": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeOne"
+                ],
+                "summary": "Get cta-02 settting",
+                "description": "Get cta-02 settting",
+                "operationId": "getHomeOneCtaTwo",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-01/brand": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeOne"
+                ],
+                "summary": "Get brand settting",
+                "description": "Get brand settting",
+                "operationId": "getHomeOneBrand",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-03/header": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeThree"
+                ],
+                "summary": "Get header settting",
+                "description": "Get header settting",
+                "operationId": "getHomeThreeHeader",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-03/course-overview": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeThree"
+                ],
+                "summary": "Get course overview settting",
+                "description": "Get course overview settting",
+                "operationId": "getHomeThreeCourseOverview",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-03/stats": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeThree"
+                ],
+                "summary": "Get stats settting",
+                "description": "Get stats settting",
+                "operationId": "getHomeThreeStats",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-03/welcome-message": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeThree"
+                ],
+                "summary": "Get welcome message settting",
+                "description": "Get welcome message settting",
+                "operationId": "getHomeThreeWelcomeMessage",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-03/course": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeThree"
+                ],
+                "summary": "Get course settting",
+                "description": "Get course settting",
+                "operationId": "getHomeThreeCourse",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-03/about": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeThree"
+                ],
+                "summary": "Get about settting",
+                "description": "Get about settting",
+                "operationId": "getHomeThreeAboutInfo",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-03/insta-images-more-titles": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeThree"
+                ],
+                "summary": "Get Images & more titles settting",
+                "description": "Get Images & more titles settting",
+                "operationId": "getHomeThreeInstaImagesTitles",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-02/header": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeTwo"
+                ],
+                "summary": "Get header settting",
+                "description": "Get header settting",
+                "operationId": "getHomeTwoHeader",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-02/stats": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeTwo"
+                ],
+                "summary": "Get stats settting",
+                "description": "Get stats settting",
+                "operationId": "getHomeTwoStats",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-02/partners": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeTwo"
+                ],
+                "summary": "Get partners settting",
+                "description": "Get partners settting",
+                "operationId": "getHomeTwoPartners",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-02/cta-01": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeTwo"
+                ],
+                "summary": "Get cta-01 settting",
+                "description": "Get cta-01 settting",
+                "operationId": "getHomeTwoCtaOne",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-02/categories": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeTwo"
+                ],
+                "summary": "Get categories settting",
+                "description": "Get categories settting",
+                "operationId": "getHomeTwoCategories",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-02/course": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeTwo"
+                ],
+                "summary": "Get course settting",
+                "description": "Get course settting",
+                "operationId": "getHomeTwoCourse",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-02/features": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeTwo"
+                ],
+                "summary": "Get features settting",
+                "description": "Get features settting",
+                "operationId": "getHomeTwoFeatures",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-02/cta-02": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeTwo"
+                ],
+                "summary": "Get cta-02 settting",
+                "description": "Get cta-02 settting",
+                "operationId": "getHomeTwoCtaTwo",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-02/cta-03": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeTwo"
+                ],
+                "summary": "Get cta-03 settting",
+                "description": "Get cta-03 settting",
+                "operationId": "getHomeTwoCtaThree",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/home-02/cta-04": {
+            "get": {
+                "tags": [
+                    "Page Setting - HomeTwo"
+                ],
+                "summary": "Get cta-04 settting",
+                "description": "Get cta-04 settting",
+                "operationId": "getHomeTwoCtaFour",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/menu/by-category": {
+            "get": {
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "Get list of Menus",
+                "description": "Get list of Menus",
+                "operationId": "getMenusByCategory",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "type",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Header_Home_1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/questions": {
+            "get": {
+                "tags": [
+                    "Question"
+                ],
+                "summary": "Get Questions",
+                "description": "Get Questions",
+                "operationId": "getQuestions",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/questions/{question}/details": {
+            "get": {
+                "tags": [
+                    "Question"
+                ],
+                "summary": "Get a Question details",
+                "description": "Get a Question details",
+                "operationId": "getQuestionDetails",
+                "parameters": [
+                    {
+                        "name": "question",
+                        "in": "path",
+                        "description": "question",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/quiz": {
+            "get": {
+                "tags": [
+                    "Quiz"
+                ],
+                "summary": "Get quizzes",
+                "description": "Get quizzes",
+                "operationId": "getQuizzes",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/quiz/{quiz}/details": {
+            "get": {
+                "tags": [
+                    "Quiz"
+                ],
+                "summary": "Get a quiz details",
+                "description": "Get a quiz details",
+                "operationId": "getQuizDetails",
+                "parameters": [
+                    {
+                        "name": "quiz",
+                        "in": "path",
+                        "description": "quiz",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/quiz/details": {
+            "get": {
+                "tags": [
+                    "Quiz"
+                ],
+                "summary": "Get quiz details",
+                "description": "Get quiz details",
+                "operationId": "getQuizDetailsFromSlug",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "hello-world"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/result": {
+            "get": {
+                "tags": [
+                    "Quiz Result"
+                ],
+                "summary": "Get quiz results",
+                "description": "Get quiz results",
+                "operationId": "getResult",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/result/{result}/details": {
+            "get": {
+                "tags": [
+                    "Quiz Result"
+                ],
+                "summary": "Get a quiz result details",
+                "description": "Get a quiz result details",
+                "operationId": "getResultDetails",
+                "parameters": [
+                    {
+                        "name": "quiz",
+                        "in": "path",
+                        "description": "quiz",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/result/user-exam": {
+            "get": {
+                "tags": [
+                    "Quiz Result"
+                ],
+                "summary": "Get quiz result details",
+                "description": "Get quiz result details",
+                "operationId": "getResultDetailsFromSlug",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "user_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "qid",
+                        "in": "query",
+                        "description": "qid",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/result/quiz-submit": {
+            "post": {
+                "tags": [
+                    "Quiz Result"
+                ],
+                "summary": "Quiz Result",
+                "description": "Quiz Result",
+                "operationId": "saveQuizResult",
+                "requestBody": {
+                    "description": "Order and Register user",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "quiz_id",
+                                    "mcq_question"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "quiz_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "mcq_question": {
+                                        "type": "string",
+                                        "example": "9~=~B. Anticipate… ensure~,~9~=~C. Sustain… question~,~7~=~C. 10~,~10~=~A. "
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Error response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No quiz"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/site-setting/header": {
+            "get": {
+                "tags": [
+                    "Site Setting"
+                ],
+                "summary": "Get site header settting",
+                "description": "GGet site header settting",
+                "operationId": "getSiteHeader",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/site-setting/footer": {
+            "get": {
+                "tags": [
+                    "Site Setting"
+                ],
+                "summary": "Get site footer settting",
+                "description": "GGet site footer settting",
+                "operationId": "getSiteFooter",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/student/all": {
+            "get": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Get list of Students",
+                "description": "Get list of Students",
+                "operationId": "getStudents",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/student/{student}/courses": {
+            "get": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Get list of Student Courses",
+                "description": "Get list of Student Courses",
+                "operationId": "getStudentCourses",
+                "parameters": [
+                    {
+                        "name": "student",
+                        "in": "path",
+                        "description": "student",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/student/details": {
+            "get": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Get student details",
+                "description": "Get student details",
+                "operationId": "getStudentFromSlug",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "samiha-jahan"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/student/details/from-user": {
+            "get": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Get Student details",
+                "description": "Get Student details",
+                "operationId": "getStudentDetails",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "userId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/student/profile/update": {
+            "post": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Create course review",
+                "description": "Create course review",
+                "operationId": "createOrUpdate",
+                "requestBody": {
+                    "description": "Course review",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "userId",
+                                    "titel_name",
+                                    "first_name",
+                                    "last_name",
+                                    "street_address",
+                                    "city",
+                                    "zip",
+                                    "country",
+                                    "teaser",
+                                    "description",
+                                    "fb_url",
+                                    "website_url",
+                                    "instagram_url",
+                                    "status"
+                                ],
+                                "properties": {
+                                    "titelName": {
+                                        "type": "string",
+                                        "example": "Mr."
+                                    },
+                                    "firstName": {
+                                        "type": "string",
+                                        "example": "Saif"
+                                    },
+                                    "lastName": {
+                                        "type": "string",
+                                        "example": "Hasan"
+                                    },
+                                    "streetAddress": {
+                                        "type": "string",
+                                        "example": "House 405, Suite 3"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "example": "New York"
+                                    },
+                                    "zip": {
+                                        "type": "string",
+                                        "example": "10005"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "example": "USA"
+                                    },
+                                    "fbUrl": {
+                                        "type": "string",
+                                        "example": "https://www.facebook.com/eduman"
+                                    },
+                                    "websiteUrl": {
+                                        "type": "string",
+                                        "example": "https://eduman.edu"
+                                    },
+                                    "instagramUrl": {
+                                        "type": "string",
+                                        "example": "https://www.instagram.com/"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "example": "Active"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Error response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, Can't create"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/subscription/packages": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "summary": "Get subscriptions",
+                "description": "Get subscriptions",
+                "operationId": "getPlansAll",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/topics": {
+            "get": {
+                "tags": [
+                    "Topic"
+                ],
+                "summary": "Get Topics",
+                "description": "Get Topics",
+                "operationId": "getTopics",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/topics/by-course": {
+            "get": {
+                "tags": [
+                    "Topic"
+                ],
+                "summary": "Get Topics from course",
+                "description": "Get Topics from course",
+                "operationId": "getTopicsFromCourse",
+                "parameters": [
+                    {
+                        "name": "courseId",
+                        "in": "query",
+                        "description": "courseId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/topics/by-classroom": {
+            "get": {
+                "tags": [
+                    "Topic"
+                ],
+                "summary": "Get Topics from course",
+                "description": "Get Topics from course",
+                "operationId": "getTopicsFromClassroom",
+                "parameters": [
+                    {
+                        "name": "courseId",
+                        "in": "query",
+                        "description": "courseId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/topics/{topic}/details": {
+            "get": {
+                "tags": [
+                    "Topic"
+                ],
+                "summary": "Get a Topic details",
+                "description": "Get a Topic details",
+                "operationId": "getTopicDetails",
+                "parameters": [
+                    {
+                        "name": "Topic",
+                        "in": "path",
+                        "description": "Topic",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/me": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get auth user details",
+                "description": "Get auth user details",
+                "operationId": "me",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Returns when user is not authenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not authorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/users/courses": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get auth user courses",
+                "description": "Get auth user courses",
+                "operationId": "getAuthUserCourses",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/users/wishlist": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get auth user wishlist",
+                "description": "Get auth user wishlist",
+                "operationId": "getAuthUserWishlist",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/users/wishlist-save": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Save auth user wishlist",
+                "description": "Save auth user wishlist",
+                "operationId": "saveAuthUserWishlist",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}

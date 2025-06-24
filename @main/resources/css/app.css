@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .dashboard-edit {
+        @apply bg-white rounded-lg shadow-sm p-7 pt-5 mb-5;
+    }
+    .dashboard-edit-title {
+        @apply text-[20px] font-bold mb-9;
+    }
+    .repeater {
+        @apply border rounded-lg p-10 pt-7 mb-6 shadow-sm
+    }
+    .repeater-btn {
+        @apply cursor-pointer h-9 w-9 leading-9 text-center inline-block border rounded outline-none
+    }
+}
+
+/* overwrite existing */
+.eduman-menu ul li.mm-active .mm-active > .has-arrow[aria-expanded=true] {
+    background: #EFF0F2 !important;
+    color: var(--clr-body-heading);
+}
+.eduman-menu ul li.mm-active .mm-active > .has-arrow[aria-expanded=true] path, .eduman-menu ul li.mm-active > .has-arrow[aria-expanded=true] rect {
+    fill: var(--clr-body-heading) !important;
+}

@@ -1,0 +1,3 @@
+INSERT INTO `quizzes` (`id`, `title`, `slug`, `description`, `content_data`, `settings_data`, `category`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'C# Final Exam - 2023', 'c-final-exam-2023', '<p>desc</p>', '{\"questions\":[\"1\",\"5\",\"11\",\"13\",\"8\"]}', '{\"quiz_attempt\":30,\"active_timer\":\"1\",\"timer_time\":\"5\",\"allow_negative_mark\":\"1\",\"flat\":0,\"negative_percentage\":\"25\"}', 'Final Exam', 'Active', NULL, '2023-05-07 06:56:54'),
+(2, 'AspNet', 'aspnet', '<p>sdsd</p>', '{\"questions\":[\"1\",\"2\",\"13\",\"11\"]}', '{\"quiz_attempt\":30,\"active_timer\":\"1\",\"timer_time\":\"4\",\"allow_negative_mark\":\"1\",\"flat\":0,\"negative_percentage\":\"25\"}', 'Final Exam', 'Active', '2023-03-09 00:06:13', '2023-05-07 06:57:02');
