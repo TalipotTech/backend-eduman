@@ -135,6 +135,8 @@ class UserController extends Controller
             "email" => $request->email,
             "phone" => $request->phone,
             "password" => $request->password,
+            "email_verified_at" => now(),
+            "status" => null,
         ];
 
         $updated = $user->update($userData);

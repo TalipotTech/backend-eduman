@@ -4699,6 +4699,100 @@
             }
         }
     },
+    "tags": [
+        {
+            "name": "User",
+            "description": "User"
+        },
+        {
+            "name": "Instructor",
+            "description": "Instructor"
+        },
+        {
+            "name": "Blog",
+            "description": "Blog"
+        },
+        {
+            "name": "Category",
+            "description": "Category"
+        },
+        {
+            "name": "Classroom",
+            "description": "Classroom"
+        },
+        {
+            "name": "Course",
+            "description": "Course"
+        },
+        {
+            "name": "Review",
+            "description": "Review"
+        },
+        {
+            "name": "Event",
+            "description": "Event"
+        },
+        {
+            "name": "FAQ",
+            "description": "FAQ"
+        },
+        {
+            "name": "Inner Page Setting",
+            "description": "Inner Page Setting"
+        },
+        {
+            "name": "Lesson",
+            "description": "Lesson"
+        },
+        {
+            "name": "Page",
+            "description": "Page"
+        },
+        {
+            "name": "Page Setting - HomeOne",
+            "description": "Page Setting - HomeOne"
+        },
+        {
+            "name": "Page Setting - HomeThree",
+            "description": "Page Setting - HomeThree"
+        },
+        {
+            "name": "Page Setting - HomeTwo",
+            "description": "Page Setting - HomeTwo"
+        },
+        {
+            "name": "Menu",
+            "description": "Menu"
+        },
+        {
+            "name": "Question",
+            "description": "Question"
+        },
+        {
+            "name": "Quiz",
+            "description": "Quiz"
+        },
+        {
+            "name": "Quiz Result",
+            "description": "Quiz Result"
+        },
+        {
+            "name": "Site Setting",
+            "description": "Site Setting"
+        },
+        {
+            "name": "Student",
+            "description": "Student"
+        },
+        {
+            "name": "Subscription",
+            "description": "Subscription"
+        },
+        {
+            "name": "Topic",
+            "description": "Topic"
+        }
+    ],
     "components": {
         "securitySchemes": {
             "sanctum": {

@@ -77,7 +77,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/eduman-install-run', [EdumanInstallController::class, 'installerRun'])->name('edumanEnvironmentDbSave');
     Route::get('/eduman-install-db', [EdumanInstallController::class, 'database'])->name('edumanDatabaseSave');
 });
-
+//Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     /** =======================================================================
      *      Dashboard Routes

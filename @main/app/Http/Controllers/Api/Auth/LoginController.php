@@ -70,7 +70,7 @@ class LoginController extends Controller
                 ->orderBy("orders.id", "DESC")
                 ->select('orders.currency', 'orders.total', 'orders.mollie_payment_status', 'order_items.description_extra_lines', 'order_items.quantity')
                 ->first();
-
+        if( !empty($order->description_extra_lines) )
             $startEndDate = json_decode($order->description_extra_lines);
             if( !empty($startEndDate[0]) )
             {
@@ -91,7 +91,7 @@ class LoginController extends Controller
                 ->orderBy("id", "DESC")
                 ->select('total_price', 'qty', 'end_at', 'start_at', 'status')
                 ->first();
-
+                if( !empty($order) ) {
                 $orderArray['currency'] = 'Dollar';
                 $orderArray['total_price'] = $order->total_price;
                 $orderArray['status'] = $order->status;
@@ -100,6 +100,7 @@ class LoginController extends Controller
                 $orderArray['end_at'] = !empty($order->end_at) ? $order->end_at : date('Y-m-d');
 
                 $user['order'] = (object)$orderArray;
+                }
             }
 
             $user['student_profile'] = Student::where('user_id', $user->id)
@@ -115,6 +116,7 @@ class LoginController extends Controller
 
         return response()->json([
             'success' => false,
+            'data' => $user,
             'message' => __('Invalid E-Mail or Password!'),
         ], 401);
     }
