@@ -155,7 +155,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN', 'edu.bdevs.net'),
+    'domain' => env('SESSION_DOMAIN', 'ensate.in'),
 
     /*
     |--------------------------------------------------------------------------

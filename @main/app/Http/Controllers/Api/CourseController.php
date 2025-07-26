@@ -57,6 +57,56 @@ class CourseController extends Controller
         ]);
     }
 
+
+/**
+     * @OA\Get(
+     *    path="/courses/top6",
+     *    operationId="getCourses",
+     *    tags={"Course"},
+     *    summary="Get Top 6 courses",
+     *    description="Get Top 6 courses",
+     *    @OA\Response(
+     *       response=200, description="Success",
+     *       @OA\JsonContent(
+     *         @OA\Property(property="status", type="integer", example="200"),
+     *         @OA\Property(property="data",type="object")
+     *       )
+     *    )
+     *  )
+     */
+    public function getTop6Courses(Request $request)
+    {
+        $courses = Course::with([
+            'categories', 
+            'authors', 
+            'lessons', 
+            'wishlist' => function($query) {
+                $query->select(['user_id', 'course_id']);
+            }
+        ])
+            ->where('status', StatusEnum::ACTIVE)
+            ->take(8)
+            ->get();
+
+        $wishArray = array();
+        foreach($courses as $course)
+        {   
+            if( !empty($course->wishlist) )
+            {
+                foreach($course->wishlist as $wishlist)
+                {
+                    $wishArray[$wishlist->course_id][] = $wishlist->user_id;
+                }
+            }
+        }
+
+        return response()->json([
+            'data' => $courses,
+            'wishlistArray' => $wishArray,
+        ]);
+    }
+
+
     /**
      * @OA\Get(
      *    path="/courses/tabs-courses-and-categories",

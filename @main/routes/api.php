@@ -87,6 +87,7 @@ Route::prefix('/v1')->group(function () {
      * ====================================================== */
     Route::group(["prefix" => "courses","as" => "course."], function () {
         Route::get('/all', [ CourseController::class, 'getCourses']);
+        Route::get('/top6', [ CourseController::class, 'getTop6Courses']);
         Route::post('/search', [ CourseController::class, 'getSearchCourses']);
         Route::get('/tabs-courses-and-categories', [ CourseController::class, 'getTabsCourses']);
         Route::get('/{course}/categories', [CourseController::class, 'getCategory']);
